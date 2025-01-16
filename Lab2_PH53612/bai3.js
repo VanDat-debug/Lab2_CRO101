@@ -1,4 +1,3 @@
-// Khởi tạo 3 promise như đề bài
 const firstPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve('foo');
@@ -22,8 +21,6 @@ const getList = () => {
             throw new Error('Fetch failed');
         });
 };
-
-// ✅ Yêu cầu 1: Sử dụng Promise.all
 Promise.all([firstPromise, secondPromise, getList()])
     .then(results => {
         console.log('Tất cả promise đã hoàn thành:', results);
@@ -31,18 +28,3 @@ Promise.all([firstPromise, secondPromise, getList()])
     .catch(error => {
         console.log('Có lỗi xảy ra:', error);
     });
-
-// ✅ Yêu cầu 2: Sử dụng Promise.allSettled
-// Promise.allSettled([firstPromise, secondPromise, getList()])
-//     .then(results => {
-//         results.forEach((result, index) => {
-//             if (result.status === 'fulfilled') {
-//                 console.log(`Promise ${index + 1} thành công:`, result.value);
-//             } else {
-//                 console.log(`Promise ${index + 1} thất bại:`, result.reason);
-//             }
-//         });
-//     })
-//     .finally(() => {
-//         console.log('Tất cả promise đã kết thúc!');
-//     });
